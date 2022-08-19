@@ -14,7 +14,17 @@ public class DistanceRunner
 {
 	public static void main( String[] args )
 	{
+		Distance d = new Distance();
 		//add test cases	
-			
+		Scanner keyboard = new Scanner(System.in);
+		out.print("Enter x1 :: ");
+		int x1 = keyboard.nextInt();
+		out.print("Enter y1 :: ");
+		int y1 = keyboard.nextInt();
+		out.print("Enter x2 :: ");
+		int x2 = keyboard.nextInt();
+		out.print("Enter y2 :: ");
+		int y2 = keyboard.nextInt();
+		d.()
 	}
 }
