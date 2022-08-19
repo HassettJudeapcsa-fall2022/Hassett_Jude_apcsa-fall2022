@@ -29,18 +29,18 @@ public class Input
 		intTwo = keyboard.nextInt();
 		
 		System.out.print("Enter a double :: ");
-		doubleOne = keyboard.nextInt();
+		doubleOne = keyboard.nextDouble();
 
 
 		System.out.print("Enter a double :: ");
-		doubleTwo = keyboard.nextInt();
+		doubleTwo = keyboard.nextDouble();
 		
 		System.out.print("Enter a float :: ");
-		floatOne = keyboard.nextInt();
+		floatOne = keyboard.nextFloat();
 
 
 		System.out.print("Enter a float :: ");
-		floatTwo = keyboard.nextInt();
+		floatTwo = keyboard.nextFloat();
 		
 		System.out.print("Enter a short :: ");
 		shortOne = keyboard.nextShort();
