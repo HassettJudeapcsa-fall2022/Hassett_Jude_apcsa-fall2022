@@ -55,17 +55,5 @@ public class Variables
 		System.out.println("*stringOne = "+stringOne+"\t\t*");
 		System.out.println("*                               *");
 		System.out.println("/////////////////////////////////");
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 }
