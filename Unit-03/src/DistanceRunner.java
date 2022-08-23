@@ -14,7 +14,6 @@ public class DistanceRunner
 {
 	public static void main( String[] args )
 	{
-		Distance d = new Distance();
 		//add test cases	
 		Scanner keyboard = new Scanner(System.in);
 		out.print("Enter x1 :: ");
@@ -25,6 +24,7 @@ public class DistanceRunner
 		int x2 = keyboard.nextInt();
 		out.print("Enter y2 :: ");
 		int y2 = keyboard.nextInt();
-		d.()
+		Distance d = new Distance(x1,y1,x2,y2);
+		out.println(d);
 	}
 }

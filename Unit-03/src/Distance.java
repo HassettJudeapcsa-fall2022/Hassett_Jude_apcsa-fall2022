@@ -15,9 +15,8 @@ public class Distance
 	private int xOne,yOne,xTwo,yTwo;
 	private double distance;
 	
-	public Distance()
-	{
-		
+	public Distance() {
+		setCoordinates(0,0,0,0);
 	}
 	
 	public Distance(int x1, int y1, int x2, int y2)
@@ -31,6 +30,7 @@ public class Distance
 		yOne = y1;
 		xTwo = x2;
 		yTwo = y2;
+		calcDistance();
 	}
 
 	public void calcDistance()
@@ -46,12 +46,13 @@ public class Distance
 	
 	public void print()
 	{
+		System.out.println(distance);
 	}
 	
 	//complete print or the toString
 
 	public String toString()
 	{
-		return "";
+		return "" + distance;
 	}
 }
