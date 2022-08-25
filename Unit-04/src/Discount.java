@@ -18,7 +18,7 @@ public class Discount
 	public static double getDiscountedBill(double bill)
 	{
 		if (bill > 2000) {
-			
+			bill *= 0.85;
 		}
 		return bill;
 	}
