@@ -12,6 +12,11 @@ public class FirstLastVowel
 	   char last = a.charAt(a.length()-1);
 	   String vowels = "aeiouAEIOU";
 	   
-		return "no";
+	   for(int i=0; i<9; i++) {
+		   if (first == vowels.charAt(i) || last == vowels.charAt(i)) {
+			   return "yes";
+		   }
+	   }
+	   return "no";
 	}
 }
