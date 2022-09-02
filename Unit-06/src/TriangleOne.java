@@ -1,27 +1,40 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name
+//Name -
 
 import static java.lang.System.*;
 
 public class TriangleOne
 {
-	private String word;
+   private String sentence;
 
 	public TriangleOne()
 	{
-		word="";
+		setWord("");
 	}
 
-	public TriangleOne(String s)
-	{
+	//add in second constructor
+	public TriangleOne(String s) {
+		setWord(s);
 	}
-
+	
 	public void setWord(String s)
 	{
+		sentence = s;
 	}
 
-	public void print( )
+	public String makeTriangle()
 	{
+		String cleaned=sentence;
+		for(int i = 0; i<sentence.length(); i++){
+			cleaned = sentence.substring(i);
+			out.println(cleaned);
+		}
+		return cleaned;
+	}
+
+	public String toString()
+	{
+		return makeTriangle();
 	}
 }
