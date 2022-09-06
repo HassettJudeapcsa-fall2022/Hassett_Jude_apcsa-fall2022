@@ -9,14 +9,14 @@ public class LetterRemover
    private String sentence;
    private char lookFor;
 
-	public LetterRemover()
-	{
-		//call set
+	public LetterRemover() {
+		setRemover("",' ');
 	}
 
-	//add in second constructor
-	
-	
+	public LetterRemover(String s, char rem) {
+		setRemover(s, rem);
+	}
+		
 	public void setRemover(String s, char rem)
 	{
 		sentence = s;
@@ -25,10 +25,10 @@ public class LetterRemover
 
 	public String removeLetters()
 	{
-		String cleaned=sentence;
+		String cleaned = "";
 		for(int i=0; i<sentence.length();i++) {
-			if(cleaned.substring(), cleaned.substring(i)) {
-				
+			if(!(sentence.charAt(i) == lookFor)) {
+				cleaned = cleaned.concat(sentence.substring(i,i+1));
 			}
 		}
 		return cleaned;
@@ -36,6 +36,6 @@ public class LetterRemover
 
 	public String toString()
 	{
-		return sentence + " - letter to remove " + lookFor;
+		return removeLetters() + " - letter to remove " + lookFor;
 	}
 }
