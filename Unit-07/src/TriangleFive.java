@@ -32,7 +32,6 @@ public class TriangleFive
 
 	public String toString()
 	{
-		String a = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String output="";
 		for (int i = amount-1; i>=0; i--) {
 			for(int x = 0; x<=i; x++) {
