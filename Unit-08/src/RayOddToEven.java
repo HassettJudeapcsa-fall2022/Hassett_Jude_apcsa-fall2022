@@ -24,8 +24,7 @@ public class RayOddToEven
 				break;
 			}
 		}
-		System.out.print(length + " " + oddindex +1 + ray.length);
-		if(length == ray.length-oddindex+1) {
+		if(length == ray.length-oddindex-1) {
 			return -1;
 		}
 		return length;
