@@ -1,4 +1,4 @@
-package activity1;
+package activity1_4;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,7 +12,8 @@ public class Deck {
 	/**
 	 * cards contains all the cards in the deck.
 	 */
-	private List<Card> cards;
+	//private List<Card> cards;
+	private Card[] cards;
 
 	/**
 	 * size is the number of not-yet-dealt cards.
@@ -32,6 +33,14 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		cards = new Card[size];
+		int l = 0;
+		for(int i = 0; i<suits.length; i++) {
+			for(int x = 0; x<ranks.length; x++) {
+				cards[l++] = new Card(ranks[x], suits[i], values[x]); 
+			}
+		}
+		shuffle();
 	}
 
 
@@ -41,6 +50,9 @@ public class Deck {
 	 */
 	public boolean isEmpty() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		if(cards.length == 0)
+			return true;
+		return false;
 	}
 
 	/**

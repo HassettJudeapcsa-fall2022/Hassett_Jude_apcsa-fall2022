@@ -1,4 +1,4 @@
-package activity1;
+package activity1_4;
 /**
  * Card.java
  *
@@ -87,7 +87,6 @@ public class Card {
 	 */
 	@Override
 	public String toString() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
 		return rank + " of " + suit + "(point value = " + pointValue + ")";
 	}
 }
