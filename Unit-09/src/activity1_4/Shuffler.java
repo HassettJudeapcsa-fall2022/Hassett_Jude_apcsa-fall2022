@@ -74,6 +74,7 @@ public class Shuffler {
 			k+=2;
 		}
 		values = shuffled;
+		
 	}
 
 	/**
