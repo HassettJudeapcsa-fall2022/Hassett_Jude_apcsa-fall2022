@@ -9,17 +9,19 @@ public class DeckTester {
 	 *	@param args is not used.
 	 */
 	public static void main(String[] args) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		//deck 1
 		Deck deck1 = new Deck(new String[] {"a", "b", "c"}, new String[] {"hearts", "aces", "spades"}, new int[] {1,2,3});
 		System.out.println(deck1.deal());
 		System.out.println(deck1);
 		System.out.println(deck1.size());
 		System.out.println(deck1.isEmpty());
+		//deck 2
 		Deck deck2 = new Deck(new String[] {"d", "e", "f"}, new String[] {"hearts", "aces", "spades"}, new int[] {1,2,3});
 		System.out.println(deck2.deal());
 		System.out.println(deck2);
 		System.out.println(deck2.size());
 		System.out.println(deck2.isEmpty());
+		//deck 3
 		Deck deck3 = new Deck(new String[] {"g", "h", "i"}, new String[] {"diamonds", "hearts", "aces", "spades"}, new int[] {1,2,3});
 		System.out.println(deck3.deal());
 		System.out.println(deck3);
