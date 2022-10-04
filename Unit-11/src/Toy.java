@@ -11,10 +11,12 @@ public class Toy
 
 	public Toy()
 	{
+		this("");
 	}
 
 	public Toy( String nm )
 	{
+		setName(nm);
 	}
 	
 	public int getCount()
@@ -24,6 +26,7 @@ public class Toy
 	
 	public void setCount( int cnt )
 	{
+		count = cnt;
 	}
 	
 	public String getName()
@@ -33,6 +36,7 @@ public class Toy
 	
 	public void setName( String nm )
 	{
+		name = nm;
 	}
 
 	public String toString()
