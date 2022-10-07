@@ -14,14 +14,14 @@ public class Toy
 		this("");
 	}
 
-	public Toy( String nm )
+	public Toy( String nm)
 	{
 		setName(nm);
 	}
 	
 	public int getCount()
 	{
-		return 0;
+		return count;
 	}
 	
 	public void setCount( int cnt )
@@ -31,7 +31,11 @@ public class Toy
 	
 	public String getName()
 	{
-		return null;
+		return name;
+	}
+	
+	public void addCnt(int cnt) {
+		count += cnt;
 	}
 	
 	public void setName( String nm )
@@ -41,6 +45,6 @@ public class Toy
 
 	public String toString()
 	{
-	   return "";
+	   return name + " " + count;
 	}
 }
