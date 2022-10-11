@@ -20,16 +20,26 @@ public class ToyStore
 	public void loadToys( String toys )
 	{
 		String tempToy = "";
+		boolean found = false;
+		//go through toys string to find types of toys
 		for(int i = 1; i < toys.length()+1; i++) {
+			//find end of each toy's name
 			if(toys.charAt(i-1)==' ') {
+				//if toy exists already add count instead of adding new one
 				for(Toy toy : toyList) {
 					if(toy.getName().equals(tempToy)) {
 						toy.addCnt(1);
+						tempToy = "";
+						found = true;
 						break;
 					}
-				}				
-				toyList.add(new Toy(tempToy));
-				tempToy = "";
+				}
+				//add new toy if passed til this point
+				if(found!=true) {
+					toyList.add(new Toy(tempToy));
+					tempToy = "";
+				}
+				found = false;
 			}
 			if(toys.charAt(i-1)!=' ')tempToy+=toys.substring(i-1,i);
 		}
@@ -72,7 +82,7 @@ public class ToyStore
   	  
 	public String toString()
 	{
-		sortToysByCount();
+		//sortToysByCount();
 	    return toyList.toString() + "\n" + "Most frequent toy is " + getMostFrequentToy();
 	}
 }
