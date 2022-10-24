@@ -1,4 +1,4 @@
-package activity9;
+package activity7;
 /**
  * Card.java
  *
