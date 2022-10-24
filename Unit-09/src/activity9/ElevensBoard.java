@@ -2,6 +2,7 @@ package activity9;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The ElevensBoard class represents the board in a game of Elevens.
@@ -56,6 +57,10 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		if(containsPairSum11(selectedCards) || containsJQK(selectedCards)) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -69,6 +74,19 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		for(int i = 0; i < size(); i++) {
+			for(int j = 0; j < size(); j++) {
+				if(containsPairSum11(Arrays.asList(i,j))) return true;
+			}
+		}
+		for(int i = 0; i < size(); i++) {
+			for(int j = 0; j < size(); j++) {
+				for(int x = 0; x < size(); x++) {
+					if(containsJQK(Arrays.asList(i,j,x))) return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -81,6 +99,14 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		for(int i = 1; i < selectedCards.size(); i++) {
+			for(int x = 0; x < i; x++) {
+				if(cardAt(selectedCards.get(i)).pointValue() + cardAt(selectedCards.get(x)).pointValue() == 11 ) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -93,5 +119,18 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		for (int i = 0; i < selectedCards.size(); i++){
+			for(int j = 0; j < selectedCards.size(); j++) {
+				for(int x = 0; x < selectedCards.size(); x++) {
+					Card cardI = cardAt(selectedCards.get(i));
+					Card cardJ = cardAt(selectedCards.get(j));
+					Card cardX = cardAt(selectedCards.get(x));
+					if(cardI.rank().equals("jack") && cardJ.rank().equals("queen") && cardX.rank().equals("king")) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 }
