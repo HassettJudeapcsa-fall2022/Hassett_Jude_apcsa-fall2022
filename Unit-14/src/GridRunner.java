@@ -9,10 +9,10 @@ import static java.lang.System.*;
 
 public class GridRunner
 {
-	public static void main( String args[] ) throws IOException
+	public static void main( String args[] )
 	{
-		String[] testArr = {"a", "b", "c", "d", "e", "f"};
-		Grid test = new Grid(10,10, testArr);
+		String[] testArr = {"A", "B", "C", "D", "E", "F"};
+		Grid test = new Grid(10,20, testArr);
 		System.out.print(test + "\n");
 		
 		String max = testArr[0];
