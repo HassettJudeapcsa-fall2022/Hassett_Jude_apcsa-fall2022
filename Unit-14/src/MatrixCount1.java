@@ -15,7 +15,23 @@ public class MatrixCount1
 
     public static int count( int val  )
     {
-		//add code
-		return 0;
+		int cnt = 0;
+		for(int r = 0; r< m.length; r++) {
+			for(int c = 0; c< m[0].length;c++) {
+				if(m[r][c] == val) cnt++;
+			}
+		}
+		return cnt;
+    }
+    
+    public String toString() {
+    	String output = "";
+    	for(int r = 0; r < m.length; r++) {
+    		for(int c = 0; c < m[0].length; c++) {
+    			output+=m[r][c];
+    		}
+    		output+="\n";
+    	}
+    	return output;
     }
 }
