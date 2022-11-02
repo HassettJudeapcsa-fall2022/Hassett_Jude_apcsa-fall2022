@@ -11,6 +11,14 @@ public class WordSearch
 
     public WordSearch( int size, String str )
     {
+    	m = new String[size][size];
+    	int len = 0;
+    	for(int i = 0; i < m.length; i++) {
+    		for (int x = 0; x < m[0].length; x++) {
+    			m[i][x] = str.substring(len,len+1);
+    			len++;
+    		}
+    	}
     }
 
     public boolean isFound( String word )
@@ -60,6 +68,14 @@ public class WordSearch
 
     public String toString()
     {
- 		return "";
+ 		String output = "";
+ 		for(int i = 0; i < m.length; i++) {
+ 			for(int x = 0; x < m[0].length; x++) {
+ 				output+= m[i][x];
+ 				output += " ";
+ 			}
+ 			output+= "\n";
+ 		}
+ 		return output;
     }
 }
