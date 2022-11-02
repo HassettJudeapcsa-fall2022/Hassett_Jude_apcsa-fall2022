@@ -19,6 +19,8 @@ public class WordSortTwoRunner
 		{
 			String sentence = file.nextLine();
 			//instantiate a new WordSort
+			WordSortTwo test = new WordSortTwo(sentence);
+			System.out.print(test);
 		}
 	}
 }
