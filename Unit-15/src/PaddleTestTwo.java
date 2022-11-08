@@ -22,19 +22,19 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
 	public PaddleTestTwo()
 	{
 		//set up all game variables
-
+		Color ballColor = Color.black;
+		Color paddleColor = Color.red;
 
 		//instantiate a Ball
-		
-		
+		ball = new Ball();
+		ball.setColor(ballColor);
 		
 		//instantiate a left Paddle
-		
-		
+		leftPaddle = new Paddle(20,10, 10, 30);
+		leftPaddle.setColor(paddleColor);
 		
 		
 		//instantiate a right Paddle
-		
 		
 		
 
@@ -78,8 +78,7 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
 		if(keys[1] == true)
 		{
 			//move left paddle down and draw it on the window
-
-
+			leftPaddle.moveDownAndDraw(window);
 		}
 		if(keys[2] == true)
 		{
@@ -130,5 +129,10 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
       }catch(Exception e)
       {
       }
-  	}		
+  	}
+   
+   public static void Main(String args[]) {
+	   PaddleTestTwo test = new PaddleTestTwo();
+	   test.run();
+   }
 }
