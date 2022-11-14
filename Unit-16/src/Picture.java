@@ -1,5 +1,3 @@
-package classes;
-
 import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
