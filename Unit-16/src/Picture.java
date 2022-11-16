@@ -16,8 +16,9 @@ import java.util.List; // resolves problem with java.awt.List and java.util.List
 public class Picture extends SimplePicture 
 {
   ///////////////////// constructors //////////////////////////////////
-  
-  /**
+
+
+/**
    * Constructor that takes no arguments 
    */
   public Picture ()
@@ -155,10 +156,11 @@ public class Picture extends SimplePicture
 	  Pixel[][] pixels = this.getPixels2D();
 	  for (Pixel[] rowArray : pixels) {
 		  for(Pixel pixelObj : rowArray) {
-			  int avg = (pixelObj.getRed() + pixelObj.getGreen() + pixelObj.getBlue())/3;
-			  pixelObj.setRed(avg);
-			  pixelObj.setGreen(avg);
-			  pixelObj.setBlue(avg);
+			  pixelObj.setGreen(pixelObj.getGreen()-20);
+			  pixelObj.setRed(pixelObj.getRed()-40);
+			  if(pixelObj.getBlue() > 160) {
+				  pixelObj.setBlue(pixelObj.getBlue()+40);
+			  }
 		  }
 	  }
   }
@@ -195,6 +197,87 @@ public class Picture extends SimplePicture
       }
     } 
   }
+  
+  public void mirrorVerticalRightToLeft()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int width = pixels[0].length;
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0; col < width / 2; col++)
+      {
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row][width - 1 - col];
+        leftPixel.setColor(rightPixel.getColor());
+      }
+    } 
+  }
+  
+  public void mirrorHorizontal()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int width = pixels[0].length;
+    int height = pixels.length;
+    for (int row = 0; row < height /2; row++)
+    {
+      for (int col = 0; col < width; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[height - 1 - row][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    } 
+  }
+  
+  public void mirrorHorizontalBotToTop()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int width = pixels[0].length;
+    int height = pixels.length;
+    for (int row = 0; row < height /2; row++)
+    {
+      for (int col = 0; col < width; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[height - 1 - row][col];
+        topPixel.setColor(bottomPixel.getColor());
+      }
+    } 
+  }
+  
+  public void mirrorDiagonal()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel firstPixel = null;
+    Pixel secondPixel = null;
+    int width = pixels[0].length;
+    int height = pixels.length;
+    if(width > height) {
+    	width = height;
+    } else {
+    	height = width;
+    }
+    
+    int lastX = width - 1;
+    int maxX = lastX;
+    int lastY = height - 1;
+    
+    for (int row = 0; row < lastY; row++,maxX--)
+    {
+      for (int col = 0; col < maxX; col++)
+      {
+        firstPixel = pixels[row][col];
+        secondPixel = pixels[lastX - row][lastY - col];
+        firstPixel.setColor(secondPixel.getColor());
+      }
+    } 
+  }	  
   
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
@@ -299,6 +382,7 @@ public class Picture extends SimplePicture
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
+  /*
   public static void main(String[] args) 
   {
     Picture beach = new Picture("C:\\Users\\hassettj2043\\Desktop\\APCSA Folder\\Hassett_Jude_apcsa-fall2022\\Unit-16\\src\\images\\beach.jpg");
@@ -308,5 +392,5 @@ public class Picture extends SimplePicture
     beach.mexico();
     beach.explore();
   }
-  
+  */
 } // this } is the end of class Picture, put all new methods before this

@@ -80,6 +80,27 @@ public class PictureTester
     temple.explore();
   }
   
+  public static void testMirrorVerticalRightToLeft()
+  {
+    Picture motor = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\redMotorcycle.jpg");
+    motor.mirrorVerticalRightToLeft();
+    motor.explore();
+  }
+  
+  public static void testMirrorHorizontal()
+  {
+    Picture motor = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\redMotorcycle.jpg");
+    motor.mirrorHorizontal();
+    motor.explore();
+  }
+  
+  public static void testMirrorHorizontalBotToTop()
+  {
+    Picture motor = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\redMotorcycle.jpg");
+    motor.mirrorHorizontalBotToTop();
+    motor.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -96,6 +117,13 @@ public class PictureTester
     swan.explore();
   }
   
+  public static void testMirrorDiagonal() {
+	  Picture beach = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\beach.jpg");
+	    beach.explore();
+	    beach.mirrorDiagonal();
+	    beach.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -109,12 +137,15 @@ public class PictureTester
     //testKeepOnlyGreen();
     //testNegate();
 	//testGrayscale();
-    testFixUnderwater();
+    //testFixUnderwater();
     //testMirrorVertical();
+	//testMirrorHorizontal();
+	//testMirrorHorizontalBotToTop();
+	//testMirrorVerticalRightToLeft();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
-    //testMirrorDiagonal();
+    testMirrorDiagonal();
     //testCollage();
     //testCopy();
     //testEdgeDetection();
