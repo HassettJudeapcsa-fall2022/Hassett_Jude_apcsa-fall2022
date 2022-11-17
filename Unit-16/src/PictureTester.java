@@ -101,12 +101,34 @@ public class PictureTester
     motor.explore();
   }
   
+  public static void testMirrorArms() {
+	  Picture snowman = new Picture("C:\\\\\\\\Users\\\\\\\\hassettj2043\\\\\\\\Desktop\\\\\\\\APCSA Folder\\\\\\\\Hassett_Jude_apcsa-fall2022\\\\\\\\Unit-16\\\\\\\\src\\\\\\\\images\\\\\\\\snowman.jpg");
+	  snowman.explore();
+	  snowman.mirrorArms();
+	  snowman.explore();
+  }
+  
+  public static void testMirrorGull() {
+	  Picture gull = new Picture("C:\\\\\\\\Users\\\\\\\\hassettj2043\\\\\\\\Desktop\\\\\\\\APCSA Folder\\\\\\\\Hassett_Jude_apcsa-fall2022\\\\\\\\Unit-16\\\\\\\\src\\\\\\\\images\\\\\\\\seagull.jpg");
+	  gull.explore();
+	  gull.mirrorGull();
+	  gull.explore();
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
     Picture canvas = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\640x480.jpg");
     canvas.createCollage();
     canvas.explore();
+  }
+  
+  public static void testCopy2()
+  {
+    Picture motor = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\redMotorCycle.jpg");
+    motor.explore();
+    motor.copy2(motor, 64, 424, 37, 555);
+    motor.explore();
   }
   
   /** Method to test edgeDetection */
@@ -145,8 +167,9 @@ public class PictureTester
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
-    testMirrorDiagonal();
+    //testMirrorDiagonal();
     //testCollage();
+    testCopy2();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
