@@ -125,9 +125,10 @@ public class PictureTester
   
   public static void testCopy2()
   {
-    Picture motor = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\redMotorCycle.jpg");
+	
+    Picture motor = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\640x480.jpg");
     motor.explore();
-    motor.copy2(motor, 64, 424, 37, 555);
+    motor.copy2(motor, 64, 424, 37, 555,0,400);
     motor.explore();
   }
   
