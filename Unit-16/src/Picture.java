@@ -388,7 +388,7 @@ public class Picture extends SimplePicture
 		  fromRow++, toRow++)
 		{
 			for (int fromCol = fromStartCol, toCol = startCol; 
-			    fromCol < fromEndRow &&
+			    fromCol < fromEndCol &&
 			    toCol < toPixels[0].length;  
 			    fromCol++, toCol++)
 			{
@@ -398,6 +398,22 @@ public class Picture extends SimplePicture
 			}
 		}   
 	}
+  
+  public void createCollage2() {
+	  Picture flower1 = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\flower1.jpg");
+	    Picture flower2 = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\flower2.jpg");
+	    this.copy2(flower1,25,25,50,50,0,0);
+	    this.copy2(flower2,25,25,50,50,25,0);
+	    this.copy2(flower1,25,25,50,50,50,0);
+	    Picture flowerNoBlue = new Picture(flower2);
+	    flowerNoBlue.zeroBlue();
+	    this.copy2(flowerNoBlue,25,25,50,50,75,0);
+	    this.copy2(flower1,25,25,50,50,100,0);
+	    this.copy2(flower2,25,25,50,50,125,0);
+	    this.mirrorHorizontal();
+	    this.mirrorVertical();
+	    this.write("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\collage.jpg");
+  }
 
   /** Method to create a collage of several pictures */
   public void createCollage()
@@ -416,6 +432,16 @@ public class Picture extends SimplePicture
     this.write("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\collage.jpg");
   }
   
+  public void myCollage() {
+	  Picture pic1 = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\snowman.jpg");
+	  Picture pic2 = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\msg.jpg");
+	  Picture pic3 = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\arch.jpg");
+	  this.copy(pic3,0,0);
+	  this.copy2(pic1,77,165,165,246,300,40);
+	  this.copy2(pic1,171,239,199,294,351,106);
+	  this.copy2(pic2,217,2,245,227,390,0);
+	  Picture hell = new Picture();
+  }
   
   /** Method to show large changes in color 
     * @param edgeDist the distance for finding edges

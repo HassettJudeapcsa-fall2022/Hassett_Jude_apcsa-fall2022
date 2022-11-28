@@ -123,13 +123,32 @@ public class PictureTester
     canvas.explore();
   }
   
-  public static void testCopy2()
+  public static void testCollage2()
   {
 	
-    Picture motor = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\640x480.jpg");
-    motor.explore();
-    motor.copy2(motor, 64, 424, 37, 555,0,400);
-    motor.explore();
+    Picture canvas = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\640x480.jpg");
+    canvas.createCollage2();
+    canvas.explore();
+  }
+  
+  public static void testCopy2() {
+	  Picture canvas = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\640x480.jpg");
+	  Picture flower1 = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\flower1.jpg");
+	  canvas.copy2(flower1,10,10,90,90, 320,240);
+	  canvas.explore();
+  }
+  
+  public static void testCopy() {
+	  Picture canvas = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\640x480.jpg");
+	  Picture flower1 = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\flower1.jpg");
+	  canvas.copy(flower1, 320,240);
+	  canvas.explore();
+  }
+  
+  public static void testMyCollage() {
+	  Picture canvas = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\640x480.jpg");
+	  canvas.myCollage();
+	  canvas.explore();
   }
   
   /** Method to test edgeDetection */
@@ -170,8 +189,10 @@ public class PictureTester
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
-    testCopy2();
+    //testCollage2();
+    //testCopy2();
     //testCopy();
+	testMyCollage();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
