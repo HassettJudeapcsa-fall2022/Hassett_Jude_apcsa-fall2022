@@ -440,7 +440,15 @@ public class Picture extends SimplePicture
 	  this.copy2(pic1,77,165,165,246,300,40);
 	  this.copy2(pic1,171,239,199,294,351,106);
 	  this.copy2(pic2,217,2,245,227,390,0);
-	  Picture hell = new Picture();
+	  Picture hell = new Picture(this);
+	  hell.negate();
+	  hell.mirrorVertical();
+	  this.copy2(hell,0,320,480,640,0,320);
+	  this.mexico();
+	  this.write("C:\\\\\\\\Users\\\\\\\\hassettj2043\\\\\\\\Desktop\\\\\\\\APCSA Folder\\\\\\\\Hassett_Jude_apcsa-fall2022\\\\\\\\Unit-16\\\\\\\\src\\\\\\\\images\\\\\\\\collage.jpg");
+	  Picture picFull = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\collage.jpg");
+	  picFull.keepOnlyGreen();
+	  this.copy2(picFull,300,40,387,160,302,168);
   }
   
   /** Method to show large changes in color 
@@ -450,8 +458,11 @@ public class Picture extends SimplePicture
   {
     Pixel leftPixel = null;
     Pixel rightPixel = null;
+    Pixel topPixel = null;
+    Pixel botPixel = null;
     Pixel[][] pixels = this.getPixels2D();
     Color rightColor = null;
+    Color botColor = null;
     for (int row = 0; row < pixels.length; row++)
     {
       for (int col = 0; 
@@ -467,6 +478,58 @@ public class Picture extends SimplePicture
           leftPixel.setColor(Color.WHITE);
       }
     }
+    for (int col = 0; col < pixels[0].length; col++)
+    {
+      for (int row = 0; 
+           row < pixels.length-1; row++)
+      {
+        topPixel = pixels[row][col];
+        botPixel = pixels[row+1][col];
+        botColor = botPixel.getColor();
+        if (topPixel.colorDistance(botColor) > 
+            edgeDist)
+          topPixel.setColor(Color.BLACK);
+      }
+    }
+  }
+  
+  public void edgeDetection2(int edgeDist)
+  {
+    Pixel topPixel = null;
+    Pixel botPixel = null;
+    
+    int topIntensity;
+    int botIntensity;
+    Pixel[][] pixels = this.getPixels2D();
+    for (int row = 0; row < pixels.length-1; row++)
+    {
+      for (int col = 0; col < pixels[0].length; col++)
+      {
+    	  topPixel = this.getPixel(col, row);
+    	  botPixel = this.getPixel(col, row+1);
+    	  
+    	  topIntensity = (topPixel.getRed() + topPixel.getGreen() + topPixel.getBlue())/3;
+    	  botIntensity = (botPixel.getRed() + botPixel.getGreen() + botPixel.getBlue())/3;
+    	  
+    	  if(Math.abs(topIntensity - botIntensity) < edgeDist) {
+    		  topPixel.setColor(Color.WHITE);
+    	  } else {
+    		  topPixel.setColor(Color.BLACK);
+    	  }
+      }
+    }
+    
+  }
+  
+  public void randPixels() {
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (int row = 0; row < pixels.length-1; row++)
+	   {
+	      for (int col = 0; col < pixels[0].length; col++)
+	      {
+	    	  this.getPixel(col, row).setColor(new Color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255)));
+	      }
+	   }
   }
   
   

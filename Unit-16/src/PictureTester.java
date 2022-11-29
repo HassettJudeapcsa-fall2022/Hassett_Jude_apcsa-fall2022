@@ -155,7 +155,15 @@ public class PictureTester
   public static void testEdgeDetection()
   {
     Picture swan = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\swan.jpg");
+    swan.explore();
     swan.edgeDetection(10);
+    swan.explore();
+  }
+  
+  public static void testEdgeDetection2()
+  {
+    Picture swan = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\swan.jpg");
+    swan.edgeDetection2(10);
     swan.explore();
   }
   
@@ -163,6 +171,13 @@ public class PictureTester
 	  Picture beach = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\beach.jpg");
 	    beach.explore();
 	    beach.mirrorDiagonal();
+	    beach.explore();
+  }
+  
+  public static void testRandPixels() {
+	  Picture beach = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\beach.jpg");
+	    beach.explore();
+	    beach.randPixels();
 	    beach.explore();
   }
   
@@ -192,9 +207,10 @@ public class PictureTester
     //testCollage2();
     //testCopy2();
     //testCopy();
-	testMyCollage();
+	//testMyCollage();
     //testEdgeDetection();
     //testEdgeDetection2();
+	//testRandPixels();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
