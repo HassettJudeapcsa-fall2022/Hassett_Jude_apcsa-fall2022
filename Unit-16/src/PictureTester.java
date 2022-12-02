@@ -182,8 +182,8 @@ public class PictureTester
   }
   
   public static void testEncodeAndDecode() {
-	  Picture beach = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\beach.jpg");
-	  Picture apple = new Picture("C:\\\\Users\\\\hassettj2043\\\\Desktop\\\\APCSA Folder\\\\Hassett_Jude_apcsa-fall2022\\\\Unit-16\\\\src\\\\images\\\\apple.jpg");
+	  Picture beach = new Picture("src/images/beach.jpg");
+	  Picture apple = new Picture("src/images/apple.jpg");
 	  beach.explore();
 	  beach.encode(apple);
 	  beach.explore();

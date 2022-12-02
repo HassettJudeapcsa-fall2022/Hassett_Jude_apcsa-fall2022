@@ -544,6 +544,15 @@ public class Picture extends SimplePicture
 	  Pixel currPixel = null;
 	  Pixel messagePixel = null;
 	  int count = 0;
+	  for(int row = 0; row < messagePict.getHeight(); row++) {
+		  for(int col = 0; col < messagePict.getWidth(); col++) {
+			  	  int randRow = (int)(randomMethod(currPixels[row][col].getBlue() + currPixels[row][col].getGreen()));
+			  	  int randCol = (int)(randomMethod(currPixels[row][col].getBlue() + currPixels[row][col].getGreen()));
+				  Pixel temp = messagePixels[row][col];
+				  messagePixels[row][col] = messagePixels[randRow][randCol];
+				  messagePixels[randRow][randCol] = temp;
+		  }
+	  }
 	  for (int row = 0; row < this.getHeight(); row++)
 	  {
 		  for (int col = 0; col < this.getWidth(); col++)
@@ -562,6 +571,13 @@ public class Picture extends SimplePicture
 	  }
 	  System.out.println(count);
   }
+  
+  public static double randomMethod(int seed) {
+	  Random generator = new Random(seed);
+	  double num = generator.nextDouble() * (0.5);
+	  return num;
+  }
+  
   /**
   * Method to decode a message hidden in the
   * red value of the current picture
@@ -598,15 +614,16 @@ public class Picture extends SimplePicture
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
-  /*
+ /*
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("C:\\Users\\hassettj2043\\Desktop\\APCSA Folder\\Hassett_Jude_apcsa-fall2022\\Unit-16\\src\\images\\beach.jpg");
-    beach.explore();
-    beach.zeroBlue();
-    beach.explore();
-    beach.mexico();
-    beach.explore();
+    int[] randTest = new int[10];
+    for(int i = 0; i < randTest.length; i++) {
+    	randTest[i] = randomMethod(102090, 480, 32, 400, 32);
+    }
+    for(int i = 0; i < randTest.length; i++) {
+    	System.out.print(randTest[i] + "\n");
+    }
   }
-  */
+*/
 } // this } is the end of class Picture, put all new methods before this
