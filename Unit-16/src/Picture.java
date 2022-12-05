@@ -543,21 +543,114 @@ public class Picture extends SimplePicture
 	  Pixel[][] currPixels = this.getPixels2D();
 	  Pixel currPixel = null;
 	  Pixel messagePixel = null;
+	  int widthCount = 0, widthStartX = messagePict.getWidth()-1, widthEndX = 0, widthDiff = 0;
+	  int heightCount = 0, heightStartY = messagePict.getHeight()-1, heightEndY = 0, heightDiff = 0;
 	  int count = 0;
-	  for(int row = 0; row < messagePict.getHeight(); row++) {
-		  for(int col = 0; col < messagePict.getWidth(); col++) {
-			  	  int randRow = (int)(randomMethod(currPixels[row][col].getBlue() + currPixels[row][col].getGreen()));
-			  	  int randCol = (int)(randomMethod(currPixels[row][col].getBlue() + currPixels[row][col].getGreen()));
-				  Pixel temp = messagePixels[row][col];
-				  messagePixels[row][col] = messagePixels[randRow][randCol];
-				  messagePixels[randRow][randCol] = temp;
+	  int blackCount = 0;
+	  boolean isCounting = false;
+	  boolean heightIsFirst = false;
+	  boolean widthIsFirst = false;
+	  
+	  //beginning of height-related loops
+	  
+	  for(int col = 0; col < messagePict.getWidth(); col++) {
+		  int outRow = 0;
+		  for(int row = 0; row < messagePict.getHeight(); row++) {
+			  if(messagePixels[row][col].colorDistance(Color.BLACK) < 50) {
+				  isCounting = true;
+				  blackCount++;
+				  if(row < heightStartY && heightIsFirst == false) {
+					  heightStartY = row;
+					  heightIsFirst = true;
+			  	  }
+			  }
+			  heightIsFirst = false;
+			  outRow = row;
+		  }
+		  if(blackCount <= 0) {
+			  isCounting = false;
+			  heightEndY = outRow-1;
+		  }
+		  
+		  blackCount = 0;
+		  
+		  if(isCounting == true) {
+			  heightCount++;
 		  }
 	  }
+	  
+	  for(int col = 0; col < messagePict.getWidth(); col++) {
+		  for(int row = 0; row < heightEndY; row++) {
+				   Pixel temp = messagePixels[Math.abs(row-heightStartY)][col];
+				   messagePixels[Math.abs(row-heightStartY)][col] = messagePixels[row][col];
+				   messagePixels[row][col] = temp;
+		  }
+	  }
+	  
+	  heightDiff = (int)(this.getHeight()/heightCount);
+	  int rowInv = 0;
+	  for(int row = messagePict.getHeight()-1; row >= messagePict.getHeight()/2; row-=heightDiff*2) {
+		  for(int col = 0; col < messagePict.getWidth(); col++) {
+			  Pixel temp = messagePixels[row][col];
+			  messagePixels[row][col] = messagePixels[rowInv][col];
+			  messagePixels[rowInv][col] = temp;
+		  }
+		  rowInv+=heightDiff*2;
+	  }
+	  
+	  //end of height-related loops and beginning of width-related loops
+	  
+	  for(int row = 0; row < messagePict.getHeight(); row++) {
+		  int outCol = 0;
+		  for(int col = 0; col < messagePict.getWidth(); col++) {
+			  if(messagePixels[row][col].colorDistance(Color.BLACK) < 50) {
+				  isCounting = true;
+				  blackCount++;
+				  if(col < widthStartX && widthIsFirst == false) {
+					  widthStartX = col;
+					  widthIsFirst = true;
+			  	  }
+			  }
+			  widthIsFirst = false;
+			  outCol = col;
+		  }
+		  if(blackCount <= 0) {
+			  isCounting = false;
+			  widthEndX = outCol-1;
+		  }
+		  
+		  blackCount = 0;
+		  
+		  if(isCounting == true) {
+			  widthCount++;
+		  }
+	  }
+	  
+	  for(int row = 0; row < messagePict.getHeight(); row++) {
+		  for(int col = 0; col < widthEndX; col++) {
+				   Pixel temp = messagePixels[row][Math.abs(col-widthStartX)];
+				   messagePixels[row][Math.abs(col-widthStartX)] = messagePixels[row][col];
+				   messagePixels[row][col] = temp;
+		  }
+	  }
+	  
+	  widthDiff = (int)(this.getWidth()/widthCount);
+	  int colInv = 0;
+	  for(int col = messagePict.getWidth()-1; col >= messagePict.getWidth()/2; col-=widthDiff*2) {
+		  for(int row = 0; row < messagePict.getHeight(); row++) {
+			  Pixel temp = messagePixels[row][col];
+			  messagePixels[row][col] = messagePixels[row][colInv];
+			  messagePixels[row][colInv] = temp;
+		  }
+		  colInv+=widthDiff*2;
+	  }
+	  
+	  //end of width-related loops
+	  
 	  for (int row = 0; row < this.getHeight(); row++)
 	  {
 		  for (int col = 0; col < this.getWidth(); col++)
 		  {
-			  //
 			  currPixel = currPixels[row][col];
 			  if (currPixel.getRed() % 2 == 1)
 				  currPixel.setRed(currPixel.getRed() - 1);
@@ -569,15 +662,7 @@ public class Picture extends SimplePicture
 			  }
 		  }
 	  }
-	  System.out.println(count);
   }
-  
-  public static double randomMethod(int seed) {
-	  Random generator = new Random(seed);
-	  double num = generator.nextDouble() * (0.5);
-	  return num;
-  }
-  
   /**
   * Method to decode a message hidden in the
   * red value of the current picture
@@ -594,6 +679,9 @@ public class Picture extends SimplePicture
 	  Picture messagePicture = new Picture(height,width);
 	  Pixel[][] messagePixels = messagePicture.getPixels2D();
 	  int count = 0;
+	  
+	  //decode the black and white from the main image
+	  
 	  for (int row = 0; row < this.getHeight(); row++)
 	  {
 		  for (int col = 0; col < this.getWidth(); col++)
@@ -607,7 +695,24 @@ public class Picture extends SimplePicture
 			  }
 		  }
 	  }
-	  System.out.println(count);
+	  
+	  messagePicture.explore();
+	  
+	  //decode the hall of mirrors
+	  
+	  int colInv = this.getWidth()-1;
+	  for(int row = 0; row < messagePicture.getHeight()/2; row++) {
+		  for(int col = this.getWidth()/2; col < this.getWidth()-(this.getWidth()/4); col++) {
+			  Pixel temp = messagePixels[row][col];
+			  System.out.println(col + " " + colInv);
+			  messagePixels[row][col] = messagePixels[row][colInv];
+			  messagePixels[row][colInv] = temp;
+			  messagePixels[row][col].setColor(Color.WHITE);
+			  if(colInv > 0) colInv--;
+		  }
+		  colInv = this.getWidth()-1;
+	  }
+	  
 	  return messagePicture;
   }
   
