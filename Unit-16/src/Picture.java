@@ -587,7 +587,7 @@ public class Picture extends SimplePicture
 		  }
 	  }
 	  
-	  heightDiff = (int)(this.getHeight()/heightCount);
+	  heightDiff = (int)(messagePict.getHeight()/heightCount);
 	  int rowInv = 0;
 	  for(int row = messagePict.getHeight()-1; row >= messagePict.getHeight()/2; row-=heightDiff*2) {
 		  for(int col = 0; col < messagePict.getWidth(); col++) {
@@ -634,15 +634,14 @@ public class Picture extends SimplePicture
 		  }
 	  }
 	  
-	  widthDiff = (int)(this.getWidth()/widthCount);
 	  int colInv = 0;
-	  for(int col = messagePict.getWidth()-1; col >= messagePict.getWidth()/2; col-=widthDiff*2) {
+	  for(int col = messagePict.getWidth()-1; col >= messagePict.getWidth()/2; col--) {
 		  for(int row = 0; row < messagePict.getHeight(); row++) {
 			  Pixel temp = messagePixels[row][col];
 			  messagePixels[row][col] = messagePixels[row][colInv];
 			  messagePixels[row][colInv] = temp;
 		  }
-		  colInv+=widthDiff*2;
+		  colInv++;
 	  }
 	  
 	  //end of width-related loops
@@ -698,19 +697,25 @@ public class Picture extends SimplePicture
 	  
 	  messagePicture.explore();
 	  
-	  //decode the hall of mirrors
-	  
-	  int colInv = this.getWidth()-1;
-	  for(int row = 0; row < messagePicture.getHeight()/2; row++) {
-		  for(int col = this.getWidth()/2; col < this.getWidth()-(this.getWidth()/4); col++) {
-			  Pixel temp = messagePixels[row][col];
-			  System.out.println(col + " " + colInv);
-			  messagePixels[row][col] = messagePixels[row][colInv];
-			  messagePixels[row][colInv] = temp;
-			  messagePixels[row][col].setColor(Color.WHITE);
-			  if(colInv > 0) colInv--;
+	  //unmirror then remove bottom part
+	  int colInv = 0;
+	  for(int col = messagePicture.getWidth()-1; col >= messagePicture.getWidth()/2; col--) {
+		  for(int row = 0; row < messagePicture.getHeight(); row++) {
+			  Color temp = messagePixels[row][col].getColor();
+			  messagePixels[row][col].setColor(messagePixels[row][colInv].getColor());
+			  messagePixels[row][colInv].setColor(temp);
 		  }
-		  colInv = this.getWidth()-1;
+		  colInv++;
+	  }
+	  for(int row = this.getHeight()/2; row < this.getHeight(); row++) {
+		  for(int col = 0; col < this.getWidth(); col++) {
+			  messagePixels[row][col].setColor(Color.WHITE);
+		  }
+	  }
+	  for(int row = 0; row < this.getHeight()/2; row++) {
+		  for(int col = this.getWidth()/2; col<this.getWidth(); col++) {
+			  messagePixels[row][col].setColor(Color.WHITE);
+		  }
 	  }
 	  
 	  return messagePicture;
