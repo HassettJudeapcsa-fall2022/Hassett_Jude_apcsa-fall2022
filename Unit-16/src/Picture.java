@@ -543,7 +543,7 @@ public class Picture extends SimplePicture
 	  Pixel[][] currPixels = this.getPixels2D();
 	  Pixel currPixel = null;
 	  Pixel messagePixel = null;
-	  int widthCount = 0, widthStartX = messagePict.getWidth()-1, widthEndX = 0, widthDiff = 0;
+	  int widthStartX = messagePict.getWidth()-1, widthEndX = 0;
 	  int heightCount = 0, heightStartY = messagePict.getHeight()-1, heightEndY = 0, heightDiff = 0;
 	  int count = 0;
 	  int blackCount = 0;
@@ -604,7 +604,6 @@ public class Picture extends SimplePicture
 		  int outCol = 0;
 		  for(int col = 0; col < messagePict.getWidth(); col++) {
 			  if(messagePixels[row][col].colorDistance(Color.BLACK) < 50) {
-				  isCounting = true;
 				  blackCount++;
 				  if(col < widthStartX && widthIsFirst == false) {
 					  widthStartX = col;
@@ -615,15 +614,10 @@ public class Picture extends SimplePicture
 			  outCol = col;
 		  }
 		  if(blackCount <= 0) {
-			  isCounting = false;
 			  widthEndX = outCol-1;
 		  }
 		  
 		  blackCount = 0;
-		  
-		  if(isCounting == true) {
-			  widthCount++;
-		  }
 	  }
 	  
 	  for(int row = 0; row < messagePict.getHeight(); row++) {
@@ -698,6 +692,18 @@ public class Picture extends SimplePicture
 	  messagePicture.explore();
 	  
 	  //unmirror then remove bottom part
+	  
+	  int rowInv = 0;
+	  for(int row = messagePicture.getHeight()-1; row >= messagePicture.getHeight()/2; row--) {
+		  for(int col = messagePicture.getWidth()/2; col < messagePicture.getWidth(); col++) {
+			  if(messagePixels[row][col].colorDistance(Color.BLACK) < 50) {
+				  messagePixels[rowInv][col].setColor(Color.BLACK);
+				  messagePixels[row][col].setColor(Color.WHITE);
+			  }
+		  }
+		  rowInv++;
+	  }
+	  
 	  int colInv = 0;
 	  for(int col = messagePicture.getWidth()-1; col >= messagePicture.getWidth()/2; col--) {
 		  for(int row = 0; row < messagePicture.getHeight(); row++) {
