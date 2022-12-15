@@ -37,12 +37,13 @@ public class Ship extends MovingThing
 		speed=s;
 		try
 		{
-			URL url = getClass().getResource("/images/ship.jpg");
+			URL url = getClass().getResource("ship.jpg");
 			image = ImageIO.read(url);
 		}
 		catch(Exception e)
 		{
 			//feel free to do something here
+			System.out.println("cock");
 		}
 	}
 
@@ -77,6 +78,7 @@ public class Ship extends MovingThing
 
 	public void draw( Graphics window )
 	{
+	window.drawString("poop", getX(), getY());
    	window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
 	}
 
