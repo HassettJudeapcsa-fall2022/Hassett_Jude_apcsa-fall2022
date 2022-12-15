@@ -37,7 +37,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		//instantiate other instance variables
 		//Ship, Alien
-		ship = new Ship(400, 450, 5);
+		ship = new Ship(400, 450, 50, 50, 10);
 		
 
 		this.addKeyListener(this);
