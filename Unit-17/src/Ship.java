@@ -61,8 +61,18 @@ public class Ship extends MovingThing
 	public void move(String direction)
 	{
 		//add code here
-		
-		
+		if(direction.equals("left")) {
+			setX(getX()-speed);
+		}
+		if(direction.equals("right")) {
+			setX(getX()+speed);
+		}
+		if(direction.equals("up")) {
+			setY(getY()-speed);
+		}
+		if(direction.equals("down")) {
+			setY(getY()+speed);
+		}
 	}
 
 	public void draw( Graphics window )
