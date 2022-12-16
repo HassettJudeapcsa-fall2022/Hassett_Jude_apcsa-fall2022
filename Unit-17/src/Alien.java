@@ -54,7 +54,7 @@ public class Alien extends MovingThing
 
 	public int getSpeed()
 	{
-	   return 0;
+	   return speed;
 	}
 
    public void move(String direction)
