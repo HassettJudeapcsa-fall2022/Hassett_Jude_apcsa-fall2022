@@ -93,7 +93,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			ship.draw(window);
 		}
 		if(keys[4] == true) {
-			Ammo shot = new Ammo(ship.getX()+25,ship.getY(),3);
+			Ammo shot = new Ammo(ship.getX()+20,ship.getY(),3);
 			bullets.add(shot);
 			keys[4] = false;
 		}
